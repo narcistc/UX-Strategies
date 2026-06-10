@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeacherMatic HE Generator Studio Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Prototype navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">TM</div>
+          <div>
+            <p class="eyebrow">TeacherMatic</p>
+            <h1>HE Studio</h1>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <button class="nav-item active" data-screen="dashboard" aria-label="Dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Dashboard</span>
+          </button>
+          <button class="nav-item" data-screen="step" aria-label="Step-by-step generator">
+            <i data-lucide="list-checks"></i>
+            <span>Step-by-step</span>
+          </button>
+          <button class="nav-item" data-screen="profile" aria-label="Student profile generator">
+            <i data-lucide="user-round-cog"></i>
+            <span>Student profile</span>
+          </button>
+          <button class="nav-item" data-screen="testing" aria-label="Usability metrics">
+            <i data-lucide="chart-no-axes-column-increasing"></i>
+            <span>Testing</span>
+          </button>
+        </nav>
+
+        <div class="policy-note">
+          <p class="label">Data mode</p>
+          <strong>Anonymised HE workflow</strong>
+          <span>No identifiable student data</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Higher Education workspace</p>
+            <h2 id="screen-title">Role-based generator discovery</h2>
+          </div>
+          <div class="top-actions">
+            <label class="search-field" aria-label="Search generators">
+              <i data-lucide="search"></i>
+              <input type="search" value="portfolio guidance" aria-label="Search generators">
+            </label>
+            <button class="icon-button" aria-label="Download output">
+              <i data-lucide="download"></i>
+            </button>
+            <button class="primary-button">
+              <i data-lucide="share-2"></i>
+              <span>Share</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="screen active" id="dashboard" aria-labelledby="screen-title">
+          <div class="control-band">
+            <div class="field">
+              <label for="role-select">Role</label>
+              <select id="role-select">
+                <option>Module leader</option>
+                <option>Lecturer</option>
+                <option>Learning technologist</option>
+                <option>Student support</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Task family</label>
+              <div class="segmented" role="group" aria-label="Task family">
+                <button class="active">Teaching</button>
+                <button>Assessment</button>
+                <button>Support</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="risk-select">Risk level</label>
+              <select id="risk-select">
+                <option>Low risk teaching draft</option>
+                <option>Medium risk student guidance</option>
+                <option>High risk personal data</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="insight-grid">
+            <article class="recommendation-card feature-card">
+              <div class="card-header">
+                <span class="badge teal">Recommended</span>
+                <i data-lucide="list-checks"></i>
+              </div>
+              <h3>Create a student-facing process guide</h3>
+              <p>Step-by-step generator with HE module context, accessibility checks and review prompts.</p>
+              <button class="secondary-button jump" data-screen="step">
+                <i data-lucide="arrow-right"></i>
+                <span>Open</span>
+              </button>
+            </article>
+
+            <article class="recommendation-card">
+              <div class="card-header">
+                <span class="badge amber">Responsible data</span>
+                <i data-lucide="shield-check"></i>
+              </div>
+              <h3>Build an anonymised learner profile</h3>
+              <p>Student profile generator with empathy map, journey and bias review panel.</p>
+              <button class="secondary-button jump" data-screen="profile">
+                <i data-lucide="arrow-right"></i>
+                <span>Open</span>
+              </button>
+            </article>
+
+            <article class="recommendation-card">
+              <div class="card-header">
+                <span class="badge coral">Review needed</span>
+                <i data-lucide="clipboard-check"></i>
+              </div>
+              <h3>Module rubric starter</h3>
+              <p>Draft rubric structure aligned with learning outcomes, grading scale and feedback tone.</p>
+              <button class="secondary-button">
+                <i data-lucide="bookmark"></i>
+                <span>Save</span>
+              </button>
+            </article>
+          </div>
+
+          <div class="dashboard-bottom">
+            <section class="workflow-panel">
+              <div class="section-title">
+                <h3>HE adoption checks</h3>
+                <span>4 of 5 ready</span>
+              </div>
+              <ul class="check-list">
+                <li><i data-lucide="check"></i> Module level selected</li>
+                <li><i data-lucide="check"></i> Output destination selected</li>
+                <li><i data-lucide="check"></i> Data warning visible</li>
+                <li><i data-lucide="check"></i> Accessibility review included</li>
+                <li class="pending"><i data-lucide="circle"></i> Institutional policy link</li>
+              </ul>
+            </section>
+
+            <section class="journey-strip" aria-label="User journey preview">
+              <div class="section-title">
+                <h3>Journey preview</h3>
+                <span>Discovery to export</span>
+              </div>
+              <div class="journey-steps">
+                <span>Find</span>
+                <span>Context</span>
+                <span>Generate</span>
+                <span>Review</span>
+                <span>Export</span>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="step" aria-labelledby="screen-title">
+          <div class="generator-layout">
+            <form class="generator-form">
+              <div class="form-title">
+                <h3>Step-by-step generator</h3>
+                <span class="badge teal">HE context</span>
+              </div>
+
+              <div class="field">
+                <label for="step-task">Task title</label>
+                <input id="step-task" value="Submitting a formative portfolio">
+              </div>
+
+              <div class="two-col">
+                <div class="field">
+                  <label for="module-level">Module level</label>
+                  <select id="module-level">
+                    <option>Level 6 undergraduate</option>
+                    <option>Level 4 undergraduate</option>
+                    <option>Level 7 postgraduate</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="audience">Audience</label>
+                  <select id="audience">
+                    <option>Students</option>
+                    <option>Lecturers</option>
+                    <option>Professional services</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="constraints">Constraints</label>
+                <textarea id="constraints">Use plain language, include deadline reminder, mention file format, include where to get support.</textarea>
+              </div>
+
+              <div class="setting-row">
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <span></span>
+                  Accessibility check
+                </label>
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <span></span>
+                  Show assumptions
+                </label>
+              </div>
+
+              <div class="field">
+                <label for="detail-level">Detail level</label>
+                <input id="detail-level" type="range" min="1" max="5" value="4">
+              </div>
+
+              <button type="button" class="primary-button full-width" id="generate-step">
+                <i data-lucide="sparkles"></i>
+                <span>Generate guide</span>
+              </button>
+            </form>
+
+            <section class="output-panel" aria-live="polite">
+              <div class="output-toolbar">
+                <div>
+                  <p class="eyebrow">Draft output</p>
+                  <h3>Portfolio submission guide</h3>
+                </div>
+                <div class="mini-actions">
+                  <button class="icon-button" aria-label="Copy">
+                    <i data-lucide="copy"></i>
+                  </button>
+                  <button class="icon-button" aria-label="Export">
+                    <i data-lucide="file-down"></i>
+                  </button>
+                </div>
+              </div>
+
+              <ol class="output-list" id="step-output">
+                <li>Check the assessment brief and confirm the portfolio sections required.</li>
+                <li>Prepare each file using the required format and clear file names.</li>
+                <li>Upload the draft portfolio to the formative submission area before the deadline.</li>
+                <li>Review the upload confirmation and save a copy for your records.</li>
+                <li>Contact the module team or student support service if access issues occur.</li>
+              </ol>
+
+              <div class="review-grid">
+                <div class="review-box">
+                  <h4>Assumptions</h4>
+                  <p>Submission area and deadline are already available in the VLE.</p>
+                </div>
+                <div class="review-box warning">
+                  <h4>Missing detail</h4>
+                  <p>Add exact deadline, file size limit and support contact before publishing.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="profile" aria-labelledby="screen-title">
+          <div class="generator-layout">
+            <form class="generator-form">
+              <div class="form-title">
+                <h3>Student profile generator</h3>
+                <span class="badge amber">Anonymised</span>
+              </div>
+
+              <div class="field">
+                <label for="profile-context">Learning context</label>
+                <input id="profile-context" value="Commuter student balancing work and final-year study">
+              </div>
+
+              <div class="two-col">
+                <div class="field">
+                  <label for="study-mode">Study mode</label>
+                  <select id="study-mode">
+                    <option>Full-time commuter</option>
+                    <option>Part-time distance</option>
+                    <option>Placement year</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="evidence">Evidence type</label>
+                  <select id="evidence">
+                    <option>Interview synthesis</option>
+                    <option>Survey theme</option>
+                    <option>Workshop observation</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="profile-notes">Observed needs</label>
+                <textarea id="profile-notes">Needs predictable weekly structure, concise instructions, flexible access to materials and reassurance about assessment expectations.</textarea>
+              </div>
+
+              <div class="setting-row">
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <span></span>
+                  Bias review
+                </label>
+                <label class="toggle">
+                  <input type="checkbox" checked>
+                  <span></span>
+                  Empathy map
+                </label>
+              </div>
+
+              <button type="button" class="primary-button full-width" id="generate-profile">
+                <i data-lucide="sparkles"></i>
+                <span>Generate profile</span>
+              </button>
+            </form>
+
+            <section class="output-panel" aria-live="polite">
+              <div class="output-toolbar">
+                <div>
+                  <p class="eyebrow">Draft output</p>
+                  <h3>HE learner profile</h3>
+                </div>
+                <div class="mini-actions">
+                  <button class="icon-button" aria-label="Copy">
+                    <i data-lucide="copy"></i>
+                  </button>
+                  <button class="icon-button" aria-label="Export">
+                    <i data-lucide="file-down"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="profile-card">
+                <div class="avatar" aria-hidden="true">AR</div>
+                <div>
+                  <h4>Alex Rivera</h4>
+                  <p>Level 6 commuter student with limited campus time and high need for clear assessment structure.</p>
+                </div>
+              </div>
+
+              <div class="empathy-grid">
+                <div><strong>Says</strong><span>I need to know exactly what good looks like.</span></div>
+                <div><strong>Thinks</strong><span>Small unclear details can cost me time.</span></div>
+                <div><strong>Does</strong><span>Checks VLE late evening and saves guidance offline.</span></div>
+                <div><strong>Feels</strong><span>Motivated, pressured and cautious.</span></div>
+              </div>
+
+              <div class="review-box warning">
+                <h4>Responsible use</h4>
+                <p>Use as a design hypothesis. Validate with real research and avoid treating profile traits as fixed facts.</p>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="testing" aria-labelledby="screen-title">
+          <div class="testing-layout">
+            <section class="metric-card">
+              <span class="metric">4/5</span>
+              <h3>Task completion</h3>
+              <p>Target after prototype revision.</p>
+            </section>
+            <section class="metric-card">
+              <span class="metric">2</span>
+              <h3>Critical issues</h3>
+              <p>Discovery label and missing policy link.</p>
+            </section>
+            <section class="metric-card">
+              <span class="metric">4.2</span>
+              <h3>Ease rating</h3>
+              <p>Mean post-task score out of 5.</p>
+            </section>
+          </div>
+
+          <section class="table-panel">
+            <div class="section-title">
+              <h3>Usability notes</h3>
+              <span>Replace with your participant data</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Metric</th>
+                  <th>Observed issue</th>
+                  <th>Design response</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Find generator</td>
+                  <td>Completion</td>
+                  <td>Users scanned by task label first</td>
+                  <td>Renamed cards around user goals</td>
+                </tr>
+                <tr>
+                  <td>Create guide</td>
+                  <td>Comprehension</td>
+                  <td>Missing deadline detail noticed late</td>
+                  <td>Added missing-detail review box</td>
+                </tr>
+                <tr>
+                  <td>Create profile</td>
+                  <td>Data entry</td>
+                  <td>Users asked what data is allowed</td>
+                  <td>Added anonymised data mode</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
