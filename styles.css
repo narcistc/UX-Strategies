@@ -261,6 +261,7 @@ button svg,
 .workflow-panel,
 .journey-strip,
 .table-panel,
+.evidence-panel,
 .generator-form,
 .output-panel,
 .metric-card {
@@ -404,7 +405,8 @@ textarea {
 
 .workflow-panel,
 .journey-strip,
-.table-panel {
+.table-panel,
+.evidence-panel {
   padding: 18px;
 }
 
@@ -622,6 +624,10 @@ textarea {
   margin-bottom: 16px;
 }
 
+.evidence-panel {
+  margin-top: 16px;
+}
+
 .metric-card {
   min-height: 150px;
   padding: 18px;
@@ -660,6 +666,186 @@ td {
   color: var(--muted);
 }
 
+.map-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.map-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #eef2f2;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.map-tab.active {
+  border-color: #a9d8d4;
+  background: var(--teal-soft);
+  color: var(--teal);
+}
+
+.map-stage {
+  display: none;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.map-stage.active {
+  display: grid;
+}
+
+.map-frame {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfc;
+}
+
+.map-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.ratio-dashboard {
+  aspect-ratio: 1440 / 900;
+}
+
+.ratio-wide {
+  aspect-ratio: 1971 / 900;
+}
+
+.ratio-profile {
+  aspect-ratio: 1999 / 900;
+}
+
+.heat-spot {
+  position: absolute;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(214, 45, 32, 0.66) 0%, rgba(239, 132, 55, 0.45) 35%, rgba(255, 212, 80, 0.22) 62%, rgba(255, 212, 80, 0) 74%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.dashboard-card {
+  left: 19.3%;
+  top: 20.6%;
+  width: 34.7%;
+  height: 33.3%;
+}
+
+.dashboard-search {
+  left: 61.1%;
+  top: 0.7%;
+  width: 29.2%;
+  height: 10.2%;
+}
+
+.dashboard-filter {
+  left: 43.1%;
+  top: 12.2%;
+  width: 29.9%;
+  height: 11.6%;
+}
+
+.step-input {
+  left: 14.1%;
+  top: 35.3%;
+  width: 25.4%;
+  height: 23.3%;
+}
+
+.step-action {
+  left: 15.1%;
+  top: 62.2%;
+  width: 23.3%;
+  height: 13.3%;
+}
+
+.step-output {
+  left: 37%;
+  top: 17.2%;
+  width: 36%;
+  height: 38.9%;
+}
+
+.gaze-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.gaze-layer polyline {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.82;
+}
+
+.gaze-layer circle {
+  fill: #ffffff;
+  stroke: var(--teal);
+  stroke-width: 7;
+}
+
+.gaze-layer text {
+  fill: var(--teal);
+  font-size: 25px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.gaze-layer .issue-point {
+  stroke: var(--coral);
+}
+
+.gaze-layer .issue-text {
+  fill: var(--coral);
+}
+
+.map-note {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfc;
+}
+
+.map-note h4,
+.map-note p {
+  margin-bottom: 0;
+}
+
+.map-note p {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.map-note strong {
+  font-size: 0.9rem;
+}
+
 @media (max-width: 1080px) {
   .app-shell {
     grid-template-columns: 88px minmax(0, 1fr);
@@ -684,6 +870,7 @@ td {
   .insight-grid,
   .control-band,
   .testing-layout,
+  .map-stage,
   .generator-layout {
     grid-template-columns: 1fr;
   }
@@ -703,8 +890,7 @@ td {
   }
 
   .sidebar {
-    position: sticky;
-    top: 0;
+    position: static;
     z-index: 3;
     flex-direction: row;
     justify-content: space-between;
@@ -749,6 +935,46 @@ td {
 
   table {
     display: block;
-    overflow-x: auto;
+    min-width: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    display: grid;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  tr:last-child {
+    border-bottom: 0;
+  }
+
+  td {
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 3px;
+    color: var(--ink);
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .map-tabs {
+    grid-template-columns: 1fr;
   }
 }
