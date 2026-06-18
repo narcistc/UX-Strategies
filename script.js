@@ -8,6 +8,8 @@ const screenTitles = {
 const navButtons = document.querySelectorAll("[data-screen]");
 const screens = document.querySelectorAll(".screen");
 const title = document.querySelector("#screen-title");
+const mapTabs = document.querySelectorAll(".map-tab");
+const mapStages = document.querySelectorAll(".map-stage");
 
 function showScreen(name) {
   screens.forEach((screen) => {
@@ -25,6 +27,22 @@ navButtons.forEach((button) => {
   button.addEventListener("click", () => {
     showScreen(button.dataset.screen);
     window.location.hash = button.dataset.screen;
+  });
+});
+
+mapTabs.forEach((button) => {
+  button.addEventListener("click", () => {
+    const target = button.dataset.map;
+
+    mapTabs.forEach((tab) => {
+      const isActive = tab === button;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+
+    mapStages.forEach((stage) => {
+      stage.classList.toggle("active", stage.id === target);
+    });
   });
 });
 
