@@ -381,38 +381,120 @@
           <section class="table-panel">
             <div class="section-title">
               <h3>Usability notes</h3>
-              <span>Replace with your participant data</span>
+              <span>P1-P3 prototype test</span>
             </div>
             <table>
               <thead>
                 <tr>
                   <th>Task</th>
-                  <th>Metric</th>
+                  <th>Result</th>
                   <th>Observed issue</th>
                   <th>Design response</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Find generator</td>
-                  <td>Completion</td>
-                  <td>Users scanned by task label first</td>
-                  <td>Renamed cards around user goals</td>
+                  <td data-label="Task">Find generator</td>
+                  <td data-label="Result">2/3 completed</td>
+                  <td data-label="Observed issue">P3 ran out of time after 10 minutes.</td>
+                  <td data-label="Design response">Make generator cards, search and HE task labels more prominent.</td>
                 </tr>
                 <tr>
-                  <td>Create guide</td>
-                  <td>Comprehension</td>
-                  <td>Missing deadline detail noticed late</td>
-                  <td>Added missing-detail review box</td>
+                  <td data-label="Task">Create guide</td>
+                  <td data-label="Result">2/3 completed</td>
+                  <td data-label="Observed issue">P2 did not know how to operate the Step-by-step generator.</td>
+                  <td data-label="Design response">Add an example prompt, clearer generate action and inline guidance.</td>
                 </tr>
                 <tr>
-                  <td>Create profile</td>
-                  <td>Data entry</td>
-                  <td>Users asked what data is allowed</td>
-                  <td>Added anonymised data mode</td>
+                  <td data-label="Task">Create profile</td>
+                  <td data-label="Result">3/3 completed</td>
+                  <td data-label="Observed issue">P1 took 10 minutes and struggled to find profile settings.</td>
+                  <td data-label="Design response">Move profile settings closer to the main input fields.</td>
                 </tr>
               </tbody>
             </table>
+          </section>
+
+          <section class="evidence-panel">
+            <div class="section-title">
+              <h3>Observation maps</h3>
+              <span>Heat map and gaze plot evidence</span>
+            </div>
+
+            <div class="map-tabs" role="tablist" aria-label="Observation map views">
+              <button class="map-tab active" type="button" role="tab" aria-selected="true" data-map="dashboard-map">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Discovery</span>
+              </button>
+              <button class="map-tab" type="button" role="tab" aria-selected="false" data-map="step-map">
+                <i data-lucide="list-checks"></i>
+                <span>Step-by-step</span>
+              </button>
+              <button class="map-tab" type="button" role="tab" aria-selected="false" data-map="profile-map">
+                <i data-lucide="route"></i>
+                <span>Profile path</span>
+              </button>
+            </div>
+
+            <div class="map-stage active" id="dashboard-map">
+              <div class="map-frame ratio-dashboard" aria-label="Observation-based heat map for HE generator discovery">
+                <img src="01-dashboard-generator-discovery.png" alt="HE dashboard prototype with observation heat map overlay">
+                <span class="heat-spot dashboard-card"></span>
+                <span class="heat-spot dashboard-search"></span>
+                <span class="heat-spot dashboard-filter"></span>
+              </div>
+              <aside class="map-note">
+                <span class="badge coral">2/3 completed</span>
+                <h4>Generator discovery</h4>
+                <p>P1 completed in 5 minutes, P2 in 1 minute and P3 ran out of time after 10 minutes.</p>
+                <strong>Design response</strong>
+                <p>Make search, generator cards and HE task labels more prominent.</p>
+              </aside>
+            </div>
+
+            <div class="map-stage" id="step-map">
+              <div class="map-frame ratio-wide" aria-label="Observation-based heat map for Step-by-step generator">
+                <img src="02-step-by-step-generator.png" alt="Step-by-step generator prototype with observation heat map overlay">
+                <span class="heat-spot step-input"></span>
+                <span class="heat-spot step-action"></span>
+                <span class="heat-spot step-output"></span>
+              </div>
+              <aside class="map-note">
+                <span class="badge coral">2/3 completed</span>
+                <h4>Step-by-step operation</h4>
+                <p>P1 and P3 completed in 1 minute. P2 failed after 10 minutes because the operation was unclear.</p>
+                <strong>Design response</strong>
+                <p>Add an example prompt, clearer generate action and inline guidance.</p>
+              </aside>
+            </div>
+
+            <div class="map-stage" id="profile-map">
+              <div class="map-frame ratio-profile" aria-label="Observation-based gaze plot for Student Profile generator">
+                <img src="03-student-profile-generator.png" alt="Student Profile generator prototype with observation gaze plot overlay">
+                <svg class="gaze-layer" viewBox="0 0 1999 900" aria-hidden="true">
+                  <polyline points="520,206 420,288 620,288 520,395 500,482 520,530 1040,214 1070,354 1070,475 1080,598" />
+                  <g>
+                    <circle cx="520" cy="206" r="28"></circle><text x="520" y="206">1</text>
+                    <circle cx="420" cy="288" r="28"></circle><text x="420" y="288">2</text>
+                    <circle cx="620" cy="288" r="28"></circle><text x="620" y="288">3</text>
+                    <circle cx="520" cy="395" r="28"></circle><text x="520" y="395">4</text>
+                    <circle class="issue-point" cx="500" cy="482" r="28"></circle><text class="issue-text" x="500" y="482">5</text>
+                    <circle cx="520" cy="530" r="28"></circle><text x="520" y="530">6</text>
+                    <circle cx="1040" cy="214" r="28"></circle><text x="1040" y="214">7</text>
+                    <circle cx="1070" cy="354" r="28"></circle><text x="1070" y="354">8</text>
+                    <circle cx="1070" cy="475" r="28"></circle><text x="1070" y="475">9</text>
+                    <circle cx="1080" cy="598" r="28"></circle><text x="1080" y="598">10</text>
+                  </g>
+                </svg>
+              </div>
+              <aside class="map-note">
+                <span class="badge teal">3/3 completed</span>
+                <h4>Profile settings path</h4>
+                <p>P1 completed in 10 minutes and struggled to find profile settings. P2 and P3 completed faster.</p>
+                <strong>Design response</strong>
+                <p>Move profile settings closer to the main input fields and keep the responsible-use warning visible.</p>
+              </aside>
+            </div>
           </section>
         </section>
       </main>
